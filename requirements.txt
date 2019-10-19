@@ -1,0 +1,6 @@
+django
+#Taggit
+django-extensions
+#sendgrid-django
+#django-dbbackup
+#django-cron
