@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'Search.apps.SearchConfig',
+    'search.apps.SearchConfig',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,3 +120,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR,'assets'),
+)
+
+
+'''
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "sgbackend.SendGridBackend" # for port 587
+# EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend' # for port 465 # requires django_smtp_ssl install # might be depricated?
+SENDGRID_API_KEY = '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'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = 'Black85652'
+# EMAIL_PORT = 587
+EMAIL_PORT = 465
+EMAIL_USE_TLS = True
+'''

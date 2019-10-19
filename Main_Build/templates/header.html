@@ -1,0 +1,21 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+
+<header class="wrapper">
+  <h1><a href="{% url 'home' %}">Canada NeuroTech</a></h1>
+  <nav>
+    <div class="header-links">
+      <div class="search-container">
+        <form class="search-form" method="GET" action=""/>
+          <li><input class="search-text" type="text" name="q" placeholder="Search Events" value="{{ request.GET.q }}"/></li>
+          <li><input class="search-submit" type="submit" value="Search"/></li>
+          <li><a href="{% url 'people' %}">People</a></li>
+          <li><a href="{% url 'papers' %}">Papers</a></li>
+          <li><a href="{% url 'product' %}">Products</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
