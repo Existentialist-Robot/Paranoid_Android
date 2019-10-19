@@ -5,22 +5,29 @@ General notes about satellite
 >> Sol'n: Satellite's own magnetic dipole interacts with Earth's magnetic field, resulting in torque rod.
 
 Metadata
-> Stored in ASCII readable header
-> Link for cleaning code: https://github.com/jasonfrowe/neossat
+ - Stored in ASCII readable header
+ - Link for cleaning code: https://github.com/jasonfrowe/neossat
 
-> Folder structure
->> first folder: Year(2019, 2018, ...)
->> Second folder: Day(1, 2, ...)
+ - Folder structure
+ - - first folder: Year(2019, 2018, ...)
+ - - Second folder: Day(1, 2, ...)
 
->Raw Images: NEOS_SCI_YYYYDDDHHMMSS.fits
->Java overscan cleaning: NEOS_SCI_YYYYDDDHHMMSS_clean.fits
->Python overscan cleaning: NEOS_SCI_YYYYDDDHHMMSS_cor.fits
->Python overscan+dark cleaning: NEOS_SCI_YYYYDDDHHMMSS_cord.fits
+ - Raw Images: NEOS_SCI_YYYYDDDHHMMSS.fits
+ - Java overscan cleaning: NEOS_SCI_YYYYDDDHHMMSS_clean.fits
+ - Python overscan cleaning: NEOS_SCI_YYYYDDDHHMMSS_cor.fits
+ - Python overscan+dark cleaning: NEOS_SCI_YYYYDDDHHMMSS_cord.fits
 
->'Seeing Space' of an image is 1024 x 1024 w/ 16, 3 dark pixels on top, bottom respectively.
->> FOV w/in 1024 x 1024 = .86 degrees, or about 3 arc-seconds
->> Origin @ centre
->Total images are 1072 x 1072, due to blank overscan taking up the rest
+ - 'Seeing Space' of an image is 1024 x 1024 w/ 16, 3 dark pixels on top, bottom respectively.
+ - - FOV w/in 1024 x 1024 = .86 degrees, or about 3 arc-seconds
+ - -  Origin @ centre
+ - Total images are 1072 x 1072, due to blank overscan taking up the rest
+
+ - Keyword name is uppercase and fits in first 8 bytes (bytes 1 to 8) (and is padded with spaces to be 8 bytes long). Note that in some case we use leading zeros for indices, which is specifically forbidden in the FITS standard (e.g. CCDCLK01 instead of CCDCLK1).
+ - When a value follows, next two bytes (bytes 9 and 10) are “= “ (equal sign plus a space);
+ - Remaining bytes (11 to 80) contains the value in ASCII text and a comment preceeded by “/”.
+
+Datapoints to note: 'MPS' (Position, velocity), 
+
 SIMPLE
 String
 Set to True (“T”), must be first record for standard FITS
@@ -41,7 +48,10 @@ Factor
 Data scaling. Set to ‘1’
 BZERO
 Adu
-zero def of pixel (for unsigned short). Set to 32768 IMAGE Placeholder for image specification header
+zero def of pixel (for unsigned short). Set to 32768 
+
+IMAGE Placeholder for image specification header
+
 BIASSEC
 Pixel range
 Overscan area, in image coordinates [colStart:colEnd,rowSt,rowEnd]
@@ -60,8 +70,6 @@ Image coordinates in CCD system, lower left corner column. Indices starts at zer
 CORNER1Y
 Row
 Image coord in CCD system, Lower Left Corner row
-NEOSSat FITS Image User’s Guide (V2.08) CSA-NEOSSAT-MAN-0002
-Satellite Operations 12
 CORNER2X
 Column
 Image coord in CCD system, Upper Right Corner column
@@ -121,9 +129,12 @@ Seconds
 Specifies the time elapsed since the SHUTTER state is in effect. Note that a negative number represents time in the past (which will normally be the case).
 DETECTOR
 String
-Identification of the detector being used (Science or Star Tracker) to generate this image. TIMING Placeholder for timing specification header
-NEOSSat FITS Image User’s Guide (V2.08) CSA-NEOSSAT-MAN-0002
-Satellite Operations 13
+Identification of the detector being used (Science or Star Tracker) to generate this image. 
+
+
+TIMING Placeholder for timing specification header
+
+
 TIMESYS
 String
 Time scale specification (set to ‘UTC’)
@@ -165,7 +176,12 @@ Seconds
 Length of post-processing operations in the process of taking this image.
 LENDELAY
 Seconds
-Length of the delay between exposure command execution and the first operation (CCD FLUSH) involved in taking this image. POINTING Placeholder for pointing specification header
+Length of the delay between exposure command execution and the first operation (CCD FLUSH) involved in taking this image. 
+
+
+POINTING Placeholder for pointing specification header
+
+
 EQUINOX
 Year
 Equatorial coordinates. Fixed to 2000.0 (for J2000)
@@ -199,8 +215,6 @@ Commanded quaternion qp[1]. Represents QC, or “j”.
 CMDQ2
 n/a
 Commanded quaternion qp[2]. Represents QD, or “k”.
-NEOSSat FITS Image User’s Guide (V2.08) CSA-NEOSSAT-MAN-0002
-Satellite Operations 14
 CMDQ3
 n/a
 Commanded quaternion qp[3]. Represents QA, or “scalar”.
@@ -257,12 +271,14 @@ degrees/s
 Signed angular slew velocity in Declination at midpoint of the exposure.
 ROL_VEL
 degrees/s
-Signed angular slew velocity in Roll at midpoint of the exposure. ENVIRO Placeholder for environment data header
+Signed angular slew velocity in Roll at midpoint of the exposure. 
+
+ENVIRO Placeholder for environment data header
+
+
 TEMP_CCD
 kelvins
 Temperature of CCD. If the CCD temperature history is available, the temperature will be the average of all temperature samples taken while exposing (+/- 1 second). If the CCD temperature history is not available, this value is set from the temperature sample sent by the imager after readout (which will be several seconds after exposure, more than 30 seconds for a full image).
-NEOSSat FITS Image User’s Guide (V2.08) CSA-NEOSSAT-MAN-0002
-Satellite Operations 15
 CCD-TEMP
 Celsius
 Temperature of CCD in Celsius. Derived from the value of TEMP_CCD, using formula CCD-TEMP = TEMP_CCD – 273.15.
@@ -363,8 +379,6 @@ Voltage for CCD clocking line - S- R1L/R2L/R3L
 CCDCLK05
 volts
 Voltage for CCD clocking line - S+ R1R/R2R/R3R
-NEOSSat FITS Image User’s Guide (V2.08) CSA-NEOSSAT-MAN-0002
-Satellite Operations 16
 CCDCLK06
 volts
 Voltage for CCD clocking line - DG-
@@ -394,7 +408,11 @@ volts
 Voltage for CCD clocking line - P3- ST3-/IM3-
 CCDCLK15
 volts
-Voltage for CCD clocking line - P3+ ST3+/IM3+ MPS Placeholder for the MPS section header
+Voltage for CCD clocking line - P3+ ST3+/IM3+ 
+
+MPS Placeholder for the MPS section header
+
+
 OBJECT
 String
 Prime object name (specified by the user)
@@ -506,8 +524,6 @@ ECEF Velocity at Exp middle, Y-component
 EVEL2_3
 km/s
 ECEF Velocity at Exp middle, Z-component
-NEOSSat FITS Image User’s Guide (V2.08) CSA-NEOSSAT-MAN-0002
-Satellite Operations 17
 EVEL1_1
 km/s
 ECEF Velocity at Exp start, X-component
@@ -516,7 +532,10 @@ km/s
 ECEF Velocity at Exp start, Y-component
 EVEL1_3
 km/s
-ECEF Velocity at Exp start, Z-component DIAG Placeholder for diagnostic section header
+ECEF Velocity at Exp start, Z-component 
+
+DIAG Placeholder for diagnostic section header
+
 ROE_SW
 String
 Identification of the imager (Read-Out Electronics or “ROE”) software version running at the time the image was taken.
@@ -560,8 +579,6 @@ Indicates if CCD history meta-data packet was accompanying this image. Possible 
  CCDT_NB
  CCD history data (including TX state)
 Note also that if META_CCD is MISSING, the value of field TEMP_CCD will be that of TEMP_CCD returned by META_TLM, which is a sample taken several seconds after exposure (less accurate), instead of being calculated from an average of CCD temperature history during exposure.
-NEOSSat FITS Image User’s Guide (V2.08) CSA-NEOSSAT-MAN-0002
-Satellite Operations 18
 META_VLT
 String
 Indicates if voltages meta-data packet was accompanying this image. Possible values are “OK” or “MISSING”. If missing, some records in the header won’t be filled:
@@ -601,8 +618,6 @@ Number of pixel that have exactly the value 0 (or black pixel). Note that a valu
 FRM_SEQ
 String
 Indicates whether raw telemetry transfer frame sequence (Virtual Channel Counter), while dumping this image, was continuous or not. Possible values are “OK” or “n ANOMALIES” where n gives the number of “holes” in the sequence. These anomalies would be signatures for downlink problems. If anomalies, we can expect that some pixel data
-NEOSSat FITS Image User’s Guide (V2.08) CSA-NEOSSAT-MAN-0002
-Satellite Operations 19
 will be missing (see IMGSTATE and IMG_PERC). The application will not detected missing frame at the beginning or at the end of the image.
 PKT_SEQ
 String
