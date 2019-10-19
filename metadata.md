@@ -1,10 +1,10 @@
-General notes about satellite
+## General notes about satellite
 > Magnetometer failed due to coarse sensor
 >> Sol'n: Signal pattern from GPS + direction of own GPS antennae ==> can determine own orientation
 > Torque rod failue results in loss of control / pointing
 >> Sol'n: Satellite's own magnetic dipole interacts with Earth's magnetic field, resulting in torque rod.
 
-Metadata
+## Metadata
  - Stored in ASCII readable header
  - Link for cleaning code: https://github.com/jasonfrowe/neossat
 
@@ -26,27 +26,30 @@ Metadata
  - When a value follows, next two bytes (bytes 9 and 10) are “= “ (equal sign plus a space);
  - Remaining bytes (11 to 80) contains the value in ASCII text and a comment preceeded by “/”.
 
-Datapoints Definitions:
-| METADATA CATEGORY :| DATAPOINT |: DESCRIPTION |
-| IMAGE |: EXPOSURE |: Length of exposure. |
-| |:  AExptime |: Actual exposure length. |
-| |:  Date/Time-Obs: Date/Time of observation (YYYYMM-DDTHH-MM:SS:ss). |
-| |:  R/A-Exposure: requested / actual start time of exposure (2 different rows). |
-| POINTING |: CMD |: Commanded spacecraft pointing (Celestial Coordinates). |
-| |:  ELA min/maxk |: Earth limb angle. |
-| |:  Vel_nnn: Velocity around X/Y/Z. |
-| |:  Roll / Avg / Dec_VEL: Roll, Avg, Declination velocity @ midpoint of exposure. |
-| ENVIRO |: P/N # V: P = +-, V = # |: supply sensor reading. |
-| |:  CCDBIAS:[0-7]: Voltage for CCD clocking line. |
-| MPS |:  OBJECT |: Prime Object Name. | 
-| |: OBSERVER |: HEOSS // NESS // Astro (Satellite, specified by user). |
-| |:  EPOSi-j |: ECEF Position @ Exposure start / middle / end (X, Y, Z). |
-| |:  EVEL |: ECEF Velocity @ Exposure start / middle / end (X, Y, Z). |
-| |:  JPOS |: J2000 Position @ Exposure start / middle / end (X, Y, Z). |
-| |:  JVEL |: J2000 Velocity @ Exposure start / middle / end (X, Y, Z). |
-| MPS| META_XXX |: "OK" if metadata of XXX is present, "MISSING" otherwise. |
-| |:  IMGSTATE: Indicates if data received + decoded is complete. "NOT_VERIFIED", "INCOMPLETE", "COMPLETE", "HAS_ZEROES". |
-| |:  IMG_PERC: The percentage of completion of the image. < 100% ==> some pixel values lost during delivery process or decoding. |
+## Datapoints Definitions:
+| METADATA CATEGORY | DATAPOINT | DESCRIPTION |
+| ----------------- |: --------- |: ----------- |
+| IMAGE |: EXPOSURE | Length of exposure. |
+| | AExptime | Actual exposure length. |
+| | Date/Time-Obs | Date/Time of observation (YYYYMM-DDTHH-MM:SS:ss). |
+| | R/A-Exposure | requested / actual start time of exposure (2 different rows). |
+| POINTING | CMD | Commanded spacecraft pointing (Celestial Coordinates). |
+| | ELA min/maxk | Earth limb angle. |
+| | Vel_nnn | Velocity around X/Y/Z. |
+| | Roll / Avg / Dec_VEL | Roll, Avg, Declination velocity @ midpoint of exposure. |
+| ENVIRO | P/N # V: P = +-, V = # | supply sensor reading. |
+| | CCDBIAS (0-7) | Voltage for CCD clocking line. |
+| MPS |  OBJECT | Prime Object Name. | 
+| | OBSERVER | HEOSS // NESS // Astro (Satellite, specified by user). |
+| | EPOSi-j | ECEF Position @ Exposure start / middle / end (X, Y, Z). |
+| | EVEL | ECEF Velocity @ Exposure start / middle / end (X, Y, Z). |
+| | JPOS | J2000 Position @ Exposure start / middle / end (X, Y, Z). |
+| | JVEL | J2000 Velocity @ Exposure start / middle / end (X, Y, Z). |
+| MPS| META_XXX | "OK" if metadata of XXX is present, "MISSING" otherwise. |
+| | IMGSTATE | Indicates if data received + decoded is complete. "NOT_VERIFIED", "INCOMPLETE", "COMPLETE", "HAS_ZEROES". |
+| | IMG_PERC | The percentage of completion of the image. < 100% ==> some pixel values lost during delivery process or decoding. |
+
+## Raw Data Description (Not in Tables)
 
 SIMPLE
 String
