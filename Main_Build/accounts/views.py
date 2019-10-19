@@ -25,7 +25,7 @@ def login_view(request):
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
             else:
-                return redirect('blog:list') # app name and then url
+                return redirect('search:home') # app name and then url
 
     else:
         form = AuthenticationForm()
@@ -48,4 +48,4 @@ def login_view(request):
 def logout_view(request):
     if request.method == 'POST':
         logout(request)
-        return redirect('blog:list')
+        return redirect('search:home')
