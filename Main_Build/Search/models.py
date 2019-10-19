@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Search(models.Model):
+class Search(models.Model): # defines user input
     title = models.CharField(max_length=100)
     slug = models.SlugField() # url friendly string
     body = models.TextField()
@@ -38,3 +38,10 @@ class Contact(models.Model):
     message = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     receive_newsletter = models.BooleanField()
+
+
+class Metadata(models.Model):
+    
+
+
+

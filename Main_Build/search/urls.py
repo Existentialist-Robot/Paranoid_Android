@@ -19,7 +19,6 @@ from . import views
 
 app_name = 'search'
 
-
 urlpatterns = [
     path('home/', views.home, name='home'),
     path('people/<slug>/', views.people_detail, name='people_detail'),
