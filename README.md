@@ -18,5 +18,8 @@ Superuser Username: Admin
 Email: eredman@ualberta.ca
 Password: password
 
-Astropy
+Astropy Jupyter Notebook
 http://learn.astropy.org/FITS-images.html
+
+Integrating External SQL with django
+https://stackoverflow.com/questions/56590380/import-sql-file-in-django-v-2-2
