@@ -11,3 +11,9 @@ conda activate myenv
 conda env list
 ### Viewing FITS files
 https://github.com/esheldon/fitsio
+
+
+Current Admin Info
+Superuser Username: Admin
+Email: eredman@ualberta.ca
+Password: password
