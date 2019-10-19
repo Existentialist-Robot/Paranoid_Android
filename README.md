@@ -9,3 +9,5 @@ conda activate myenv
 
 ### Verify that the new environment was installed correctly:
 conda env list
+### Viewing FITS files
+https://github.com/esheldon/fitsio
