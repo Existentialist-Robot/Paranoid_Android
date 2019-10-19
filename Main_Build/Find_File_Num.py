@@ -18,6 +18,11 @@ for index in range(len(year_url)):
     year_url[index] = base_url + str(year_url[index] + '/')
     years[year_list] = [os.path.join(year_url[index],o) for o in os.listdir(year_url[index]) 
                     if os.path.isdir(os.path.join(url[index],o))]
+    
+    
+    
+    
+    
 
 [x for x in os.listdir('ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/ASTRO/') if os.path.isfile(x)] # only files
 
