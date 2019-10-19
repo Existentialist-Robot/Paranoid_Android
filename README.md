@@ -17,3 +17,6 @@ Current Admin Info
 Superuser Username: Admin
 Email: eredman@ualberta.ca
 Password: password
+
+Astropy
+http://learn.astropy.org/FITS-images.html
