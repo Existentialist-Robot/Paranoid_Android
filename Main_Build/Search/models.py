@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Article(models.Model):
+class Search(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField() # url friendly string
     body = models.TextField()
@@ -10,7 +10,7 @@ class Article(models.Model):
     thumb = models.ImageField(default="default.png",blank=True)
     author = models.CharField(max_length=30)
     active = models.BooleanField(default=True)
-    tags = TaggableManager()
+#    tags = TaggableManager()
 
     def __str__(self):
         return self.title
