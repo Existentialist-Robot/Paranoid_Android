@@ -5,7 +5,7 @@ CSA Space Apps Challenge
 conda env create -f environment.yml
 
 ### Activate the new environment: 
-conda activate myenv
+conda activate Main_Build
 
 ### Verify that the new environment was installed correctly:
 conda env list
