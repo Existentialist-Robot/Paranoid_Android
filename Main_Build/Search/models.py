@@ -6,12 +6,18 @@ class Metadata(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField() # url friendly string
     body = models.TextField()
+    x_coord = models.CharField(max_length=10)
+    y_coord = models.CharField(max_length=10)
+    z_coord = models.CharField(max_length=10)
+    year = models.CharField(max_length=10)
+    day = models.CharField(max_length=10)
+    hour = models.CharField(max_length=10)
     date = models.DateTimeField(auto_now=True)
     thumb = models.ImageField(default="default.png",blank=True)
     author = models.CharField(max_length=30)
     active = models.BooleanField(default=True)
     tags = TaggableManager()
-
+    
     def __str__(self):
         return self.title
     def snippet(self):

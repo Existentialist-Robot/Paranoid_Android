@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #from django.contrib.auth.models import User, Group
-from . import models.Metadata as Metadata
+from .models import Metadata
 import django_filters
 
 class MetadataFilter(django_filters.FilterSet):

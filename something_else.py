@@ -26,6 +26,39 @@ file_sec = file_name[20:22]
 hdu_list_1 = fits.open(image_file_1)
 hdu_list_1.info()
 
+#parameters(year, month, day, X, Y, Z)
+
+Months = ['January','Feburary','March','April','May','June','July','August','September','October','November','December']
+Days_1 = [31,29,31,30,31,30,31,31,30,31,30,31]
+Days_2 = [31,28,31,30,31,30,31,31,30,31,30,31]
+
+#Params = [None]*10
+#Params[0] = file_year
+
+if years % 4 == 0:
+    for i in range(len(Months)):
+        if sum(Days_1[0:i]) < days and days < sum(Days_1[0:i+1]):
+            months = Months[i]
+else:
+    for i in range(len(Months)):
+        if sum(Days_2[0:i]) < days and days < sum(Days_2[0:i+1]):
+            months = Months[i]
+
+
+#%% Final Parameters
+            
+day = int(file_day)
+year = int(file_year)
+month = months # string
+
+x_coord = hdu[0].header['JPOS2_1'] # X
+y_coord = hdu[0].header['JPOS2_2'] # Y
+z_coord = hdu[0].header['JPOS2_3'] # Z
+
+title = base_url+year+'/'+folder+'/'+file_name
+
+#%% 
+
 #get header key words
 primary_hd = hdu_list_1[0].header
 rawvolt_hd = hdu_list_1[1].header
@@ -52,6 +85,4 @@ RawTlm_1 = hdu_list_1[5].data
 
 #hdu_list[0].header['DATE']
 
-Params = [None]*10
-Params[1] = 'abs'
-Params[0] = time
+
