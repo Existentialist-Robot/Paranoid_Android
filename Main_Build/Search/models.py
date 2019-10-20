@@ -11,6 +11,7 @@ class Metadata(models.Model):
     z_coord = models.CharField(max_length=10)
     year = models.CharField(max_length=10)
     month = models.CharField(max_length=10)
+    day = models.CharField(max_length=10)
     thumb = models.ImageField(models.ImageField(upload_to='blah', default='assets'))
     date = models.DateTimeField(auto_now=True)
     tags = TaggableManager()

@@ -14,8 +14,12 @@
   </form>
   <ul>
   {% for metadata in filter.qs %}
-    <h2><a href="{% url 'search:detail' slug=metadata.slug %}"><img src="{{ metadata.thumb }}"></a></h2>
-    <li>{{ metadata.x_coord }} - {{ metadata.y_coord }} - {{ metadata.z_coord }}</li>
+    <h2><a href="{% url 'search:detail' slug=metadata.slug %}"><img src="{% static 'default.png' %}" width="250"  height="250"/></a></h2>
+    <li>coordinates({{ metadata.x_coord }},{{ metadata.y_coord }},{{ metadata.z_coord }})</li>
+    <li>Name {{ metadata.name }}</li>
+    <li>Year: {{ metadata.year }}</li>
+    <li>Month: {{ metadata.month }}</li>
+    <li>Day of Year: {{ metadata.month }}</li>
   {% endfor %}
   </ul>
     {% include "pagination.html" with page=response %}

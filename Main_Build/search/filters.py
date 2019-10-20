@@ -9,4 +9,6 @@ class MetadataFilter(django_filters.FilterSet):
 #    x_coord__lt = django_filters.NumberFilter(name='x_coord__up', lookup_expr='x_coord__lt') 
     class Meta:
         model = Metadata
-        fields = ['x_coord', 'y_coord', 'z_coord', ]
+        fields = ['year' ,'month', 'day','x_coord', 'y_coord', 'z_coord', ]
+        
+        

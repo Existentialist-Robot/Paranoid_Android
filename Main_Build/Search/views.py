@@ -12,7 +12,7 @@ def home(request): # going to have to include the search parameters here as a fo
     meta_filter = MetaFilter(request.GET, queryset=meta_list)
 #    meta_filter_qs = MetaFilter(request.GET, queryset=meta_list).qs
     
-    paginator = Paginator(meta_filter.qs, 9)
+    paginator = Paginator(meta_filter.qs, 3)
     page = request.GET.get('page')
     try:
         response = paginator.page(page)
