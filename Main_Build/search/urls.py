@@ -21,6 +21,7 @@ app_name = 'search'
 
 urlpatterns = [
     path('home/', views.home, name='home'),
+    path('profile/', views.profile, name='profile'),
     path('people/<slug>/', views.people_detail, name='people_detail'),
     path('team/', views.people_list, name='Team'),
     path('mission/', views.mission, name='Mission'),

@@ -1,8 +1,23 @@
 from django.db import models
+from taggit.managers import TaggableManager
 
 # Create your models here.
+class Metadata(models.Model):
+    title = models.CharField(max_length=100)
+    slug = models.SlugField() # url friendly string
+    body = models.TextField()
+    date = models.DateTimeField(auto_now=True)
+    thumb = models.ImageField(default="default.png",blank=True)
+    author = models.CharField(max_length=30)
+    active = models.BooleanField(default=True)
+    tags = TaggableManager()
 
-class Search(models.Model): # defines user input
+    def __str__(self):
+        return self.title
+    def snippet(self):
+        return self.body[:50] + "..."
+    
+class Profile(models.Model): # defines user input
     title = models.CharField(max_length=100)
     slug = models.SlugField() # url friendly string
     body = models.TextField()
@@ -40,8 +55,8 @@ class Contact(models.Model):
     receive_newsletter = models.BooleanField()
 
 
-class Metadata(models.Model):
-    
+
+#    
 
 
 

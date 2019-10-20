@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'search.apps.SearchConfig',
     'accounts.apps.AccountsConfig',
+    'taggit.apps.TaggitAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
