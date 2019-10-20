@@ -16,8 +16,8 @@ conn = sqlite3.connect('images.db')
 
 c = conn.cursor()
 
-c.execute('Drop table if exists images;')
-c.execute('create table images(metadata, filename);')
+c.execute('Drop table if exists images')
+c.execute('create table images(metadata, filename)')
 c.execute('insert into images (metadata, filename) values (1, 2)')
 
 for item in c.execute('select * from images'):
