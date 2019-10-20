@@ -4,7 +4,7 @@ from .models import Metadata
 import django_filters
 
 class MetadataFilter(django_filters.FilterSet):
-    first_name = django_filters.CharFilter(lookup_expr='icontains')
+#    first_name = django_filters.CharFilter(lookup_expr='icontains')
     class Meta:
         model = Metadata
-        fields = ['username', 'first_name', 'last_name', ]
+        fields = ['x_coord', 'y_coord', 'z_coord', ]
