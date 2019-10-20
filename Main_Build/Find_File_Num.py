@@ -5,15 +5,16 @@ Created on Sat Oct 19 12:57:57 2019
 @author: eredm
 """
 
-from json import load
-from time import time
-import urllib
-from bs4 import BeautifulSoup as bs4
-from astropy.io import fits
-from astropy.utils.data import download_file
 import os
 import sys
+import urllib
+import sqlite3
+from astropy.io import fits
+from astropy.utils.data import download_file
 
+conn = sqlite3.connect('/db.sqlite3')
+
+c = conn.cursor()
 
 # ftp = FTP('ftp.asc-csa.gc.ca')
 # ftp.login()
@@ -22,9 +23,9 @@ import sys
 
 
 base_url = "ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/ASTRO"
-years = ['NESS/2015', '2019']
+years = ['2019']
 year_urls = [base_url + year + '/' for year in years]
-days = ['1' + str.zfill(str(num), 3) for num in range(1, 366)]
+days = ['1' + str.zfill(str(num), 3) for num in range(1, 100)]
 
 for item in ['347-Ness', '348-Comet249P']:
     days.insert(0, item)
@@ -39,7 +40,6 @@ def get_meta_data(image_list):
         sys.exit(1)
 
 counter = 0
-start = time()
 for year in years:
     for day in days:
         counter += 1
@@ -60,9 +60,6 @@ for year in years:
                 print('reading in')
                 image_urls.append(download_file(base_url + '/' + year + '/' + day + '/' + image))
             # print(image)
-
-
-end = time()
 
 print("Total images read: {}.".format(counter))
 print("Total seconds taken: {}. ({} minutes)".format(end - start, (end - start) / 60.0))
@@ -136,4 +133,5 @@ ROL_VEL =            0.0000026 / [deg/s] Average angular slew vel. in Roll over
 
 
     
+
 
