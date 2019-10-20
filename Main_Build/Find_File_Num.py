@@ -24,15 +24,19 @@ base_url = "ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/A
 years = ['NESS/2015', '2019']
 year_urls = [base_url + year + '/' for year in years]
 days = ['1' + str.zfill(str(num), 3) for num in range(1, 366)]
-html_days = ["""<td sortable-data="1""" + day + """">""" for day in days]
+
+for item in ['347-Ness', '348-Comet249P']:
+    days.append(item)
 
 image_urls = []
+
+file = download_file(base_url +)
 
 def get_meta_data(image_list):
     for url in image_list:
         data = fits.open(url)
-        data = data[0].header
-        print(data.values)
+        print(data['DATE'])
+        # print(data.data)
         sys.exit(1)
 
 counter = 0
@@ -60,10 +64,8 @@ for year in years:
             """ Gets the image filename of each file for each day for each year """
             image = image.split(" ")[-1]
             image_urls.append(base_url + '/' + year + '/' + day + '/' + image)
-            if counter > 200:
+            if counter > 1:
                 get_meta_data(image_urls)
-            if counter > 250:
-                sys.exit(1)
             # print(image)
 
 
