@@ -53,7 +53,6 @@ dependencies:
   - libtiff=4.0.10=h2e92f26_1004
   - libwebp=1.0.2=hfa6e2cd_2
   - lz4-c=1.8.3=he025d50_1001
-  - make=3.82=0
   - markupsafe=1.1.1=py37he774522_0
   - mccabe=0.6.1=py37_1
   - mistune=0.8.4=py37he774522_0
@@ -69,7 +68,6 @@ dependencies:
   - pandoc=2.2.3.2=0
   - pandocfilters=1.4.2=py37_1
   - parso=0.5.1=py_0
-  - patch=2.5.9=1
   - pickleshare=0.7.5=py37_0
   - pip=19.2.3=py37_0
   - pluggy=0.13.0=py37_0

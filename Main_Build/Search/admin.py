@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import People, Contact #Search
+from models import People, Contact #Search
 
 #class SearchAdmin(admin.ModelAdmin):
 #    list_display = ('title','slug','author','date')

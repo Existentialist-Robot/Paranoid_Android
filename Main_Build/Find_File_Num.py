@@ -76,7 +76,7 @@ def main():
                         date = date.split('-')
                         year = date[0]
 
-                        """ Save to images.db """
+                        """ Save data to images.db """
                         c.execute('INSERT INTO images(x, y, z, year, month, day, object, filename) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
                                     (hdr['JPOS2_1'], hdr['JPOS2_2'], hdr['JPOS2_3'], date[0], date[1], date[2], hdr['OBJECT'], image))
                         for row in c.execute('select * from images'):
@@ -153,3 +153,4 @@ def eden_main():
     '''
 
 main()
+# eden_main()
