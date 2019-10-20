@@ -14,6 +14,7 @@ from astropy.utils.data import download_file
 import os
 import sys
 
+
 # ftp = FTP('ftp.asc-csa.gc.ca')
 # ftp.login()
 # ftp.cwd('/users/OpenData_DonneesOuvertes/pub/NEOSSAT/ASTRO/')
@@ -30,8 +31,6 @@ for item in ['347-Ness', '348-Comet249P']:
 
 image_urls = []
 
-file = download_file(base_url +)
-
 def get_meta_data(image_list):
     for url in image_list:
         data = fits.open(url)
@@ -42,30 +41,21 @@ def get_meta_data(image_list):
 counter = 0
 start = time()
 for year in years:
-
-    """ Gets the days of each year """
-    # print(base_url + year)
-    year_url = urllib.request.urlopen(base_url + year)
-    days = year_url.read().decode('ASCII')
-    days = days.split('\r')
-    del days[0]
-    del days[-1]
-
+    print('here')
     for day in days:
         """ Get the images for each day of each year """
-        day = day.split(" ")[-1]
-        # print(base_url + year + '/' + day + '/')
-        day_url = urllib.request.urlopen(base_url + '/' + year + '/' + day + '/')
-        images = day_url.read().decode('ASCII').split('\r')
-        # print(len(images))
-
-        for image in images:
-            counter += 1
-            """ Gets the image filename of each file for each day for each year """
-            image = image.split(" ")[-1]
-            image_urls.append(base_url + '/' + year + '/' + day + '/' + image)
-            if counter > 1:
-                get_meta_data(image_urls)
+        try:
+            day_url = urllib.request.urlopen(base_url + '/' + year + '/' + day + '/')
+            images = day_url.read().decode('ASCII').split('\r')
+        except:
+            pass
+        else:
+            for image in images:
+                counter += 1
+                """ Gets the image filename of each file for each day for each year """
+                image = image.split(" ")[-1]
+                print('here')
+                image_urls.append(download_file(base_url + '/' + year + '/' + day + '/' + image))
             # print(image)
 
 
