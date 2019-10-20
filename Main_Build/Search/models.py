@@ -3,7 +3,7 @@ from taggit.managers import TaggableManager
 
 # Create your models here.
 class Metadata(models.Model):
-    title = models.CharField(max_length=100) # name
+    name = models.CharField(max_length=100) # name
     slug = models.SlugField() # url friendly string
     body = models.TextField()
     x_coord = models.CharField(max_length=10)
@@ -11,11 +11,12 @@ class Metadata(models.Model):
     z_coord = models.CharField(max_length=10)
     year = models.CharField(max_length=10)
     month = models.CharField(max_length=10)
+    thumb = models.ImageField(models.ImageField(upload_to='blah', default='assets'))
     date = models.DateTimeField(auto_now=True)
     tags = TaggableManager()
     
     def __str__(self):
-        return self.title
+        return self.name
     def snippet(self):
         return self.body[:50] + "..."
     

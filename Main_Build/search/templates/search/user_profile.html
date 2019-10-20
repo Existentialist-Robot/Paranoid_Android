@@ -11,14 +11,14 @@
   </div>
   <div class="article-title">
     {% if tag %}
-      <h1>Tagged Article List</h1>
+      <h1>Tagged Image List</h1>
     {% else %}
       <h1>Saved Images</h1>
     {% endif %}
   </div>
   <div class='query-result'>
     {% if tag %}
-      <h2>Articles tagged with "{{ tag.name }}"</h2>
+      <h2>Images tagged with "{{ tag.name }}"</h2>
     {% endif %}
   </div>
     <div class = "articles">
@@ -26,7 +26,6 @@
         <div class="article">
           <h2><a href="{% url 'image:detail' slug=image.slug %}">{{image.title}}</a></h2>
           <p>{{q}}
-          <p>{{image.snippet}}</p>
           <p>{{image.date}}</p>
           <!-- <p>{{blog.tags.all|join:", "}}</p> -->
           <p class="tags">

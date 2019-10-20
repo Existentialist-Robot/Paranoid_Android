@@ -5,13 +5,14 @@ from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggit.models import Tag
 #from . import forms
-from . import filters
+from .filters import MetadataFilter as MetaFilter
 
-
-# Create your views here.
 def home(request): # going to have to include the search parameters here as a form
-    filtered_qs = filters.MetadataFilter(request.GET,queryset=Metadata.objects.all()).qs
-    paginator = Paginator(filtered_qs, 9)
+    meta_list = Metadata.objects.all()
+    meta_filter = MetaFilter(request.GET, queryset=meta_list)
+#    meta_filter_qs = MetaFilter(request.GET, queryset=meta_list).qs
+    
+    paginator = Paginator(meta_filter.qs, 9)
     page = request.GET.get('page')
     try:
         response = paginator.page(page)
@@ -19,7 +20,9 @@ def home(request): # going to have to include the search parameters here as a fo
         response = paginator.page(1)
     except EmptyPage:
         response = paginator.page(paginator.num_pages)
-    return render(request, 'search/search_home.html', {'response': response})
+        
+    return render(request, 'search/search_home.html',{'filter': meta_filter, 'response': response})
+
 
 def profile(request):
     return render(request,'search/user_profile.html')
@@ -62,3 +65,9 @@ def mission(request):
     
 def contact(request):
     return render(request,'search/search_contact.html')
+
+def detail(request, slug):
+    metadata = Metadata.objects.get(slug=slug)
+    return render(request, 'search/search_detail.html',{'metadata':metadata})
+    return HttpResponse(slug)
+

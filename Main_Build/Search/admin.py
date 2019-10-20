@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import People, Contact #Search
+from .models import People, Contact, Metadata #Search
 
 #class SearchAdmin(admin.ModelAdmin):
 #    list_display = ('title','slug','author','date')
@@ -8,6 +8,12 @@ from .models import People, Contact #Search
 #
 #admin.site.register(Search, SearchAdmin)
 
+class MetadataAdmin(admin.ModelAdmin):
+    list_display = ('x_coord','y_coord','z_coord')
+    search_fields = ('title','body')
+    prepopulated_fields = {'slug': ('name',)}
+
+admin.site.register(Metadata, MetadataAdmin)    
 
 class PeopleAdmin(admin.ModelAdmin):
     list_display = ('name','slug')
