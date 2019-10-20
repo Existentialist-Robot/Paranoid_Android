@@ -12,15 +12,18 @@ import sqlite3
 from astropy.io import fits
 from astropy.utils.data import download_file
 
-conn = sqlite3.connect('/db.sqlite3')
+conn = sqlite3.connect('images.db')
 
 c = conn.cursor()
 
-# ftp = FTP('ftp.asc-csa.gc.ca')
-# ftp.login()
-# ftp.cwd('/users/OpenData_DonneesOuvertes/pub/NEOSSAT/ASTRO/')
+c.execute('Drop table if exists images;')
+c.execute('create table images(metadata, filename);')
+c.execute('insert into images (metadata, filename) values (1, 2)')
 
+for item in c.execute('select * from images'):
+    print(item)
 
+sys.exit(1)
 
 base_url = "ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/ASTRO"
 years = ['2019']
@@ -60,9 +63,6 @@ for year in years:
                 print('reading in')
                 image_urls.append(download_file(base_url + '/' + year + '/' + day + '/' + image))
             # print(image)
-
-print("Total images read: {}.".format(counter))
-print("Total seconds taken: {}. ({} minutes)".format(end - start, (end - start) / 60.0))
 
 #%%
 
