@@ -13,7 +13,7 @@ class Metadata(models.Model):
     year = models.CharField(max_length=10)
     month = models.CharField(max_length=10)
     date = models.DateTimeField(auto_now=True)
-    # tags = TaggableManager()
+    tags = TaggableManager()
     
     def __str__(self):
         return self.title
@@ -219,7 +219,7 @@ def eden_main():
 
 """
 
-main()
+#main()
 # eden_main()
 
 

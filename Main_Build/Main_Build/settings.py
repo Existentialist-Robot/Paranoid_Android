@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'Main_Build.wsgi.application'
 
 DATABASES = {
     'default': {
-        'DATABASE_ENGINE': 'django.db.backends.sqlite3',
-        'DATABASE_NAME': os.path.join(BASE_DIR, 'images.db'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'images.db'),
+    },
+    'extra': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'extra.db'),
     }
 }
 
