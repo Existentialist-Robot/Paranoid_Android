@@ -55,8 +55,19 @@ def people_list(request):
 
 def people_detail(request, slug):
     people = People.objects.get(slug=slug)
+    '''
+    This view has three main purposes
+    
+    1. Process the image + add to the preallocated metadatabase
+    
+    2. Display a java enabled gif screen while loading
+    
+    3. Handle a save button click and ensure that we save 
+    a new one_to_many link between the user(many) profile and the particular image(one)
+    '''
     return render(request, 'search/people_detail.html',{'people':people})
     return HttpResponse(slug)
+    
 
 def mission(request):
     return render(request,'search/search_mission.html')
